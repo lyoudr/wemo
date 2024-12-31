@@ -6,6 +6,7 @@ An application which provides a rental platform, for user to rent a scooter.
 - NestJS
 - PostgreSQL
 - Docker Compose
+- DataBase Migration tool: npx ts-node
 
 ## API
 - Rent a scooter (available user_id: 1, 2, 3) (available scooter_id: 1, 2, 3)
