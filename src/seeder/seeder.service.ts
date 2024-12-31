@@ -17,7 +17,7 @@ export class SeederService {
 
   async seed() {
     // Seed Users
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < 3; i++) {
       const user = this.userRepository.create({
         name: faker.person.fullName(),
       });
@@ -25,7 +25,7 @@ export class SeederService {
     }
 
     // Seed Scooters
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < 3; i++) {
       const scooter = this.scooterRepository.create({
         model: faker.vehicle.model(),
       });

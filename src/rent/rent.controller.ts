@@ -1,7 +1,8 @@
-import { Controller, Post, Body, Param } from '@nestjs/common';
-import { RentService } from './rent.service';
 import { ApiOperation, ApiResponse, ApiParam, ApiBody } from '@nestjs/swagger';
+import { Controller, Post, Get, Query, Body, Param } from '@nestjs/common';
 import { ApiProperty } from '@nestjs/swagger';
+import { RentService } from './rent.service';
+import { ScooterStatus } from '../scooter/scooter.entity';
 
 export class StartRentDto {
     @ApiProperty({
@@ -51,5 +52,28 @@ export class RentController {
     })
     async endRent(@Param('rentId') rentId: number){
         return this.rentService.returnScooter(rentId);
+    }
+
+    @Get('scooters')
+    @ApiOperation({ summary: 'Get all scooters: "ALL", "AVAILABLE", "RENTED"' })
+    @ApiResponse({
+        status: 200,
+        description: 'List of available scooters',
+        type: [String],  // Replace with an appropriate DTO if needed
+    })
+    async getAvailableScooters(
+        @Query('status') status?: ScooterStatus.AVAILABLE | ScooterStatus.RENTED, // Query parameter for status
+    ) {
+        return this.rentService.getAvailableScooters(status);
+    }
+
+    @Get('records')
+    @ApiOperation({ summary: 'Get all rented records.'})
+    @ApiResponse({
+        status: 200,
+        description: 'Get all rented records',
+    })
+    async getAllRentedRecords() {
+        return this.rentService.getAllRentedRecords();
     }
 }
