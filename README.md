@@ -22,6 +22,12 @@ An application which provides a rental platform, for user to rent a scooter.
 ## Start Project
 
 ### Step 1
+clone this project
+```
+git clone git@github.com:lyoudr/wemo.git
+```
+
+### Step 2
 add a .env file in root folder
 ```
 DATABASE_HOST=postgres
@@ -31,7 +37,7 @@ DATABASE_PASSWORD=postgres
 DATABASE_NAME=postgres
 ```
 
-### Step 2
+### Step 3
 start project
 ```
 $ docker compose up --build
